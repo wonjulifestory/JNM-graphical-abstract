@@ -1,0 +1,46 @@
+{
+  "id": "fass2026",
+  "source_pdf": "JNM sample\\jnm-32-2-217.pdf",
+  "source_pages": {
+    "article": 1,
+    "table_4": 7
+  },
+  "citation": "Abdel-Jalil A, Koo TH, Fass R. J Neurogastroenterol Motil. 2026;32(2):217-227.",
+  "doi": "10.5056/jnm25058",
+  "title": "Dysphagia in ineffective esophageal motility",
+  "cohort_n": 228,
+  "irpdata_n": 206,
+  "study_design": "Single-center retrospective study, 2010-2013",
+  "assessment": "High-resolution manometry with impedance",
+  "findings": [
+    "Defective bolus transit",
+    "Poor LES relaxation"
+  ],
+  "comparison": [
+    {
+      "group": "With dysphagia",
+      "numerator": 15,
+      "denominator": 51,
+      "percent": 29
+    },
+    {
+      "group": "Without dysphagia",
+      "numerator": 20,
+      "denominator": 155,
+      "percent": 13
+    }
+  ],
+  "p_value": "0.006",
+  "conclusion": "Dysphagia was associated with the combination of impaired bolus transit and poor LES relaxation in patients with IEM.",
+  "review_flags": [
+    "IRP thresholds appear inconsistently in the Methods; do not print a threshold without author confirmation.",
+    "The comparison uses IRP data available for 206 of 228 patients.",
+    "The percentages describe the combined finding within each symptom group."
+  ],
+  "validation": {
+    "cohort_verified": true,
+    "table_4_verified": true,
+    "comparison_denominators_verified": true,
+    "p_value_verified": true
+  }
+}

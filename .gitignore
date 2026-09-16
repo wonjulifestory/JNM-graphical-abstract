@@ -1,0 +1,7 @@
+tmp/
+lo_profile/
+JNM sample/
+reference/*.pdf
+reference/*.html
+*.pyc
+__pycache__/
