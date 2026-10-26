@@ -1,18 +1,20 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
 import { Presentation, PresentationFile } from 'file:///C:/Users/user/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs';
 import { createRequire } from 'node:module';
 const runtimeRequire=createRequire('C:/Users/user/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/package.json');
 const sharp=runtimeRequire('sharp');
 
-const root='D:/vibe_coding/Graphic abstract';
-const data=JSON.parse(await fs.readFile(path.join(root,'scripts/fass2026/fass2026.json'),'utf8'));
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const data=JSON.parse(await fs.readFile(path.join(root,'scripts/fass2026.json'),'utf8'));
 process.env.RUNTIME_NODE_MODULES='C:/Users/user/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules';
 process.env.RUNTIME_NODE='C:/Users/user/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe';
 const skill='C:/Users/user/.codex/plugins/cache/openai-primary-runtime/presentations/26.904.11930/skills/presentations';
-const temp=path.join(root,'tmp/fass2026');
-const out=path.join(root,'figures/fass2026');
+const temp=path.join(root,'tmp');
+const out=path.join(root,'output');
+await fs.mkdir(temp,{recursive:true});
+await fs.mkdir(out,{recursive:true});
 const {applyPresentationChartFont,finalizePresentation}=await import(pathToFileURL(path.join(skill,'container_tools/artifact_tool_utils.mjs')));
 const p=Presentation.create({slideSize:{width:1600,height:900}});
 const s=p.slides.add(); s.background.fill='#FFFFFF';
@@ -36,8 +38,8 @@ text('Assessment','High-resolution manometry\nwith impedance',1045,208,500,76,27
 line('Study separator',56,305,1488,0);
 
 text('Physiology heading','COMBINED FINDINGS',56,329,730,37,24,teal,true);
-const png=path.join(root,'figures/assets/01_esophagus_bolus_LES_illustration.png');
-const jpg=path.join(root,'figures/assets/01_esophagus_bolus_LES_illustration.jpg');
+const png=path.join(root,'assets/01_esophagus_bolus_LES_illustration.png');
+const jpg=path.join(root,'assets/01_esophagus_bolus_LES_illustration.jpg');
 await sharp(png).jpeg({quality:90}).toFile(jpg);
 s.images.add({name:'Esophagus illustration',blob:new Uint8Array(await fs.readFile(jpg)),contentType:'image/jpeg',alt:'Conceptual illustration of retained bolus and reduced relaxation at the lower esophageal sphincter. Not a patient image.',fit:'contain',position:{left:406,top:377,width:255,height:359}});
 text('Bolus transit label','Defective bolus transit',56,424,327,38,27,navy,true);
@@ -74,7 +76,7 @@ text('Conclusion',`${data.conclusion} [1]`,56,787,1488,65,27,navy,true);
 text('Citation','[1] Abdel-Jalil A, Koo TH, Fass R. J Neurogastroenterol Motil. 2026;32(2):217–227.',56,868,1105,24,16,muted);
 text('DOI','doi:10.5056/jnm25058',1162,868,382,24,16,muted,false,'right');
 
-s.speakerNotes.textFrame.setText(`Source: Abdel-Jalil A, Koo TH, Fass R. J Neurogastroenterol Motil. 2026;32(2):217–227. DOI 10.5056/jnm25058. Supplied source: JNM sample/jnm-32-2-217.pdf. Cohort and study design: p.217 and Methods. Main comparison: p.223, Table 4. Percentages are as reported (29 and 13), denominators 51 and 155, reported P=0.006. This is the prevalence of coexisting abnormal bolus transit and elevated IRP within each symptom group, not dysphagia prevalence within physiological subgroups. Original article CC BY-NC 4.0. The anatomical illustration was created with OpenAI image generation on 2026-09-17 and is conceptual; it is not measured patient anatomy. Text and chart are native editable PowerPoint elements. LES: lower esophageal sphincter. IEM: ineffective esophageal motility.`);
+s.speakerNotes.textFrame.setText(`Source: Abdel-Jalil A, Koo TH, Fass R. J Neurogastroenterol Motil. 2026;32(2):217–227. DOI 10.5056/jnm25058. Supplied source: source/jnm-32-2-217.pdf. Cohort and study design: p.217 and Methods. Main comparison: p.223, Table 4. Percentages are as reported (29 and 13), denominators 51 and 155, reported P=0.006. This is the prevalence of coexisting abnormal bolus transit and elevated IRP within each symptom group, not dysphagia prevalence within physiological subgroups. Original article CC BY-NC 4.0. The anatomical illustration was created with OpenAI image generation on 2026-09-17 and is conceptual; it is not measured patient anatomy. Text and chart are native editable PowerPoint elements. LES: lower esophageal sphincter. IEM: ineffective esophageal motility.`);
 await (await PresentationFile.exportPptx(p)).save(path.join(temp,'candidate.pptx'));
 const preview=await p.export({slide:s,format:'png',scale:1.5});
 await fs.writeFile(path.join(temp,'preview.png'),new Uint8Array(await preview.arrayBuffer()));

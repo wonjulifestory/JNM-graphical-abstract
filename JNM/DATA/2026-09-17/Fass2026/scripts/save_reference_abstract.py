@@ -6,8 +6,8 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib import colors
 
 root = Path(__file__).resolve().parents[1]
-soup = BeautifulSoup((root / 'reference/fass2026_source.html').read_text(encoding='utf-8'), 'html.parser')
-out = root / 'reference/01_Abdel-Jalil_Koo_Fass_2026_abstract.pdf'
+soup = BeautifulSoup((root / 'source/reference/fass2026_source.html').read_text(encoding='utf-8'), 'html.parser')
+out = root / 'source/reference/01_Abdel-Jalil_Koo_Fass_2026_abstract.pdf'
 styles = getSampleStyleSheet()
 styles['Title'].fontSize = 14
 styles['Title'].leading = 18
@@ -34,7 +34,7 @@ for sid in ['sec1', 'sec2', 'sec3', 'sec4']:
 story.append(Spacer(1, 10))
 story.append(Paragraph(escape(soup.find(id='kwd-group1').get_text(' ', strip=True)), styles['BodyText']))
 SimpleDocTemplate(str(out), leftMargin=45, rightMargin=45, topMargin=36, bottomMargin=36).build(story)
-bad = root / 'reference/01_Abdel-Jalil_Koo_Fass_2026_IEM_Dysphagia.pdf'
+bad = root / 'source/reference/01_Abdel-Jalil_Koo_Fass_2026_IEM_Dysphagia.pdf'
 if bad.exists() and not bad.read_bytes().startswith(b'%PDF'):
     bad.unlink()
 print(out)

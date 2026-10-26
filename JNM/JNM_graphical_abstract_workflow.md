@@ -57,7 +57,7 @@
 
 ## 출처
 
-[1] Abdel-Jalil A, Koo TH, Fass R. Dysphagia is Associated With the Combination of Defective Bolus Transit and Poorly Relaxing Lower Esophageal Sphincter in Patients With Ineffective Esophageal Motility. J Neurogastroenterol Motil. 2026;32(2):217–227. https://doi.org/10.5056/jnm25058 . 전문 HTML: https://pmc.ncbi.nlm.nih.gov/articles/PMC13071423/ . 전문 HTML과 서지·초록 전문 PDF를 reference 폴더에 보관했다. 출판사 원문 PDF 다운로드는 정상 완료되지 않았다.
+[1] Abdel-Jalil A, Koo TH, Fass R. Dysphagia is Associated With the Combination of Defective Bolus Transit and Poorly Relaxing Lower Esophageal Sphincter in Patients With Ineffective Esophageal Motility. J Neurogastroenterol Motil. 2026;32(2):217–227. https://doi.org/10.5056/jnm25058 . 전문 HTML: https://pmc.ncbi.nlm.nih.gov/articles/PMC13071423/ . 전문 HTML과 참고 PDF는 `DATA/2026-09-17/Fass2026/source/reference/`에 보관했다. 최초 조사에서는 출판사 PDF 다운로드가 완료되지 않았으나, 시안 제작에 사용한 원문 PDF는 `DATA/2026-09-17/Fass2026/source/jnm-32-2-217.pdf`에 보관되어 있다.
 
 프로그램 공식 문서:
 - OpenAI: https://learn.chatgpt.com/docs/artifacts-viewer
@@ -65,3 +65,8 @@
 - Inkscape: https://inkscape.org/about/
 - Bioicons: https://bioicons.com/
 - BioRender 학술 라이선스: https://www.biorender.com/academic-license
+
+
+## 제작 자료 보관
+
+Fass2026 첫 시안과 원문·삽화·제작 코드·검수 기록: [DATA/2026-09-17/Fass2026](DATA/2026-09-17/Fass2026/README.md).
