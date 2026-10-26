@@ -9,3 +9,7 @@ __pycache__/
 JNM/DATA/*/Fass2026/source/*.pdf
 JNM/DATA/*/Fass2026/source/reference/*.pdf
 JNM/DATA/*/Fass2026/source/reference/*.html
+
+# Environment files, including examples, stay local.
+.env
+.env.*
